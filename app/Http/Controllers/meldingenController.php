@@ -11,7 +11,7 @@ echo $attractie . " / " . $capaciteit . " / " . $melder;
 require_once '../../../config/conn.php';
 
 //2. Query
-$query = "INSERT INTO meldingen (attractie, capaciteit, melder) VALUES (:attractie, :capaciteit, :melder)";
+$query = "INSERT INTO meldingen (attractie, type, capaciteit, melder) VALUES (:attractie, :type, :capaciteit, :melder)";
 
 
 
@@ -22,6 +22,7 @@ $statement = $conn->prepare($query);
 
 $statement->execute([
     ":attractie" => $attractie,
+    ":type" => $type,
     ":capaciteit" => $capaciteit,
     ":melder" => $melder
 ]);
