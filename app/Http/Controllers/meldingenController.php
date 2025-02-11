@@ -28,3 +28,5 @@ $statement->execute([
 ]);
 
 $items = $statement->fetchAll(PDO::FETCH_ASSOC);
+
+header("Location: " . $base_url . "/resources/views/meldingen/index.php?msg=Melding opgeeslagen");

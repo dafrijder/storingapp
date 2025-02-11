@@ -24,15 +24,23 @@
                 <label for="type">Type</label>
                 <!-- hier komt een dropdown -->
                 <select name="type" id="type">
-                    <option value="storing">achtbaan</option>
-                    <option value="storing">restaurant</option>
-                    <option value="storing">speeltuin</option>
-                    <option value="storing">water</option>
+                    <option value="achtbaan">achtbaan</option>
+                    <option value="draaiend">draaiend</option>
+                    <option value="kinder">kinder</option>
+                    <option value="horeca">horeca</option>
+                    <option value="show">show</option>
+                    <option value="water">water</option>
+                    <option value="overig">overig</option>
                 </select>
             </div>
             <div class="form-group">
                 <label for="capaciteit">Capaciteit p/uur:</label>
                 <input type="number" min="0" name="capaciteit" id="capaciteit" class="form-input">
+            </div>
+            <div class="form-group">
+                <label for="prio">prio:</label>
+                <input type="checkbox" name="prio" id="prio" class="form-input">
+                <label for="prio">melding met prioriteit</label>
             </div>
             <div class="form-group">
                 <label for="melder">Naam melder:</label>
