@@ -59,6 +59,25 @@ if ($action == "create") {
 
     header("Location: " . $base_url . "/resources/views/meldingen/index.php?msg=Melding opgeslagen");
 } else if ($action == "update") {
-    
+    require_once '../../../config/conn.php';
+    $id = $_POST['id'];
+    $attractie = $_POST['attractie'];
+    $type = $_POST['type'];
+    $capaciteit = $_POST['capaciteit'];
+    $prioriteit = $_POST['prioriteit'];
+    $melder = $_POST['melder'];
+    $overig = $_POST['overig'];
+    $query = "UPDATE meldingen SET attractie = :attractie, type = :type, capaciteit = :capaciteit, prioriteit = :prioriteit, melder = :melder, overige_info = :overig WHERE id = :id";
+    $statement = $conn->prepare($query);
+    $statement->execute([
+        ":attractie" => $attractie,
+        ":type" => $type,
+        ":capaciteit" => $capaciteit,
+        ":prioriteit" => $prioriteit,
+        ":melder" => $melder,
+        ":overig" => $overig,
+        ":id" => $id
+    ]);
+    header("Location: " . $base_url . "/resources/views/meldingen/index.php?msg=Melding opgeslagen");
 } else if ($action == "delete") {
 }
