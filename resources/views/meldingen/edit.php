@@ -7,16 +7,15 @@
 </head>
 
 <body>
-    <?php 
+    <?php
 
-    if(!isset($_GET['id'])){
+    if (!isset($_GET['id'])) {
         echo "Geef in je aanpaslink op de index.php het id van betreffende item mee achter de URL in je a-element om deze pagina werkend te krijgen na invoer van je vijfstappenplan";
         exit;
-
     }
     ?>
     <?php
-        require_once '../components/header.php'; ?>
+    require_once '../components/header.php'; ?>
 
     <div class="container">
         <h1>Melding aanpassen</h1>
@@ -47,8 +46,8 @@
         ?>
 
         <form action="<?php echo $base_url; ?>/app/Http/Controllers/meldingenController.php" method="POST">
-        <input type="hidden" name="action" value="update">
-        <input type="hidden" name="id" value="<?php echo $id; ?>">
+            <input type="hidden" name="action" value="update">
+            <input type="hidden" name="id" value="<?php echo $id; ?>">
             <div class="form-group">
                 <label>Naam attractie:</label>
                 <?php echo $melding['attractie']; ?>
@@ -63,25 +62,42 @@
                 <label for="prioriteit">Prio:</label>
                 <!-- Let op: de checkbox blijft nu altijd uit, pas dit nog aan -->
                 <input type="checkbox" name="prioriteit" id="prioriteit" <?php if ($melding['prioriteit'] == 1) {
-                    echo 'checked';
-                } ?>>
+                                                                                echo 'checked';
+                                                                            } ?>>
                 <label for="prioriteit">Melding met prioriteit</label>
             </div>
-            <div class="form-group"> 
+            <div class="form-group">
                 <label for="melder">Naam melder:</label>
                 <!-- Voeg hieronder nog een value-attribuut toe, zoals bij capaciteit -->
                 <input type="text" name="melder" id="melder" class="form-input" value="<?php echo $melding['melder']; ?>">
             </div>
             <div class="form-group">
                 <label for="overig">Overige info:</label>
-                <textarea name="overig" id="overig" class="form-input" rows="4"><?php echo $melding['overige_info'];?></textarea>
+                <textarea name="overig" id="overig" class="form-input" rows="4"><?php echo $melding['overige_info']; ?></textarea>
             </div>
-            
+
             <input type="submit" value="Melding opslaan">
 
         </form>
-    </div>  
+
+        <button id="delete">Delete</button>
+        <div id="deletemodel">
+            <h2>Weet je zeker dat je deze melding wilt verwijderen?</h2>
+            <form action="<?php echo $base_url; ?>/app/Http/Controllers/meldingenController.php" method="post">
+                <input type="hidden" name="action" value="delete">
+                <input type="hidden" name="id" value="<?php echo $id; ?>">
+                <input type="submit" value="Melding verwijderen">
+            </form>
+        </div>
+    </div>
 
 </body>
+
+<script>
+    document.getElementById('deletemodel').style.display = 'none';
+    document.getElementById('delete').addEventListener('click', function() {
+        document.getElementById('deletemodel').style.display = 'block';
+    });
+</script>
 
 </html>

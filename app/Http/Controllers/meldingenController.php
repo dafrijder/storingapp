@@ -80,4 +80,12 @@ if ($action == "create") {
     ]);
     header("Location: " . $base_url . "/resources/views/meldingen/index.php?msg=Melding opgeslagen");
 } else if ($action == "delete") {
+    require_once '../../../config/conn.php';
+    $id = $_POST['id'];
+    $query = "DELETE FROM meldingen WHERE id = :id";
+    $statement = $conn->prepare($query);
+    $statement->execute([
+        ":id" => $id
+    ]);
+    header("Location: " . $base_url . "/resources/views/meldingen/index.php?msg=Melding verwijderd");
 }
