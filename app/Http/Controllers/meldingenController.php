@@ -1,4 +1,10 @@
 <?php
+session_start();
+if (!isset($_SESSION['user_id'])) {
+    $msg = "Je moet eerst inloggen";
+    header("Location: " . $base_url . "/login.php?msg=" . $msg);
+}
+
 
 $action = $_POST['action'];
 if ($action == "create") {

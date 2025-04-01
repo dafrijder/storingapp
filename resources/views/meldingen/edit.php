@@ -5,7 +5,13 @@
     <title>StoringApp / Meldingen / Aanpassen</title>
     <?php require_once '../components/head.php'; ?>
 </head>
-
+<?php 
+session_start();
+if (!isset($_SESSION['user_id'])) {
+    $msg = "Je moet eerst inloggen";
+    header("Location: " . $base_url . "/login.php?msg=" . $msg);
+}
+?>
 <body>
     <?php
 
@@ -82,12 +88,15 @@
 
         <button id="delete">Delete</button>
         <div id="deletemodel">
-            <h2>Weet je zeker dat je deze melding wilt verwijderen?</h2>
-            <form action="<?php echo $base_url; ?>/app/Http/Controllers/meldingenController.php" method="post">
-                <input type="hidden" name="action" value="delete">
-                <input type="hidden" name="id" value="<?php echo $id; ?>">
-                <input type="submit" value="Melding verwijderen">
-            </form>
+            <div class="model-content">
+                <h2>Weet je zeker dat je deze melding wilt verwijderen?</h2>
+                <form action="<?php echo $base_url; ?>/app/Http/Controllers/meldingenController.php" method="post">
+                    <input type="hidden" name="action" value="delete">
+                    <input type="hidden" name="id" value="<?php echo $id; ?>">
+                    <input type="submit" value="Melding verwijderen">
+                </form>
+                <button id="closemodel">nee</button>
+            </div>
         </div>
     </div>
 
@@ -97,6 +106,9 @@
     document.getElementById('deletemodel').style.display = 'none';
     document.getElementById('delete').addEventListener('click', function() {
         document.getElementById('deletemodel').style.display = 'block';
+    });
+    document.getElementById('closemodel').addEventListener('click', function() {
+        document.getElementById('deletemodel').style.display = 'none';
     });
 </script>
 
