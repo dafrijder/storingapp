@@ -18,6 +18,6 @@ if ($user && password_verify($password, $user['password'])) {
     $msg = "Je bent ingelogd";
     header("Location: " . $base_url . "/index.php?msg=". $msg);
 } else {
-    header("Location: " . $base_url . "/resources/views/login.php");
+    header("Location: " . $base_url . "/login.php");
 }
 ?>

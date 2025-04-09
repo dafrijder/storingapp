@@ -20,7 +20,11 @@
                 <input type="password" name="password" id="password">
             </div>
             <div class="form-group">
-                <input type="submit" value="Login">
+                <label for="password_check">voer opnieuw uw wachtwoord in:</label>
+                <input type="password" name="password_check" id="password_check">
+            </div>
+            <div class="form-group">
+                <input type="submit" value="registreer">
             </div>
         </form>
     </div>

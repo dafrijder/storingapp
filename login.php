@@ -23,6 +23,10 @@
                 <input type="submit" value="Login">
             </div>
         </form>
+        <div class="registreer">
+            <p>nog geen account</p>
+            <a href="./registreer.php">registreer</a>
+        </div>
     </div>
 </body>
 
